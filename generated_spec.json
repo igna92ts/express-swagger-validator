@@ -9,10 +9,6 @@
       "name": "Ignacio Torres",
       "email": "ignacio.torres@wolox.com.ar",
       "url": "example.com"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
   "servers": [
@@ -21,89 +17,42 @@
     }
   ],
   "paths": {
-    "/users/algo": {
-      "get": {
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
+    "swaggerPaths": {
+      "/users/algo": {
+        "get": {
+          "parameters": [
+            {
+              "name": "name",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
             }
-          }
-        ]
-      },
-      "post": {
-        "parameters": [
-          {
-            "name": "age",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "number"
+          ]
+        },
+        "post": {
+          "parameters": [
+            {
+              "name": "age",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "number"
+              }
+            },
+            {
+              "name": "myheader",
+              "in": "headers",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
             }
-          },
-          {
-            "name": "myheader",
-            "in": "headers",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
+          ]
+        }
       }
     }
   },
-  "components": {
-    "schemas": {
-      "Pet": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/NewPet"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "NewPet": {
-        "required": [
-          "name"
-        ],
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "tag": {
-            "type": "string"
-          }
-        }
-      },
-      "Error": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
+  "components": {}
 }
