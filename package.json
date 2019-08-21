@@ -1,6 +1,6 @@
 {
   "name": "param-validator-wolox-node",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "ajv": "^6.5.5",
-    "cors": "^2.8.5",
     "eslint-config-wolox-node": "^2.0.0",
-    "express": "^4.16.4",
     "express-wolox-logger": "^1.1.0"
   }
 }
