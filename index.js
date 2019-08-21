@@ -1,31 +1,12 @@
-const express = require('express'),
-  cors = require('cors'),
-  app = express();
-
-const bodyParser = require('body-parser');
-
 const superPackage = require('./lib');
-
-const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
-
-const bodyParserJsonConfig = () => ({
-  parameterLimit: DEFAULT_PARAMETER_LIMIT,
-  limit: DEFAULT_BODY_SIZE_LIMIT
-});
-const bodyParserUrlencodedConfig = () => ({
-  extended: true,
-  parameterLimit: DEFAULT_PARAMETER_LIMIT,
-  limit: DEFAULT_BODY_SIZE_LIMIT
-});
-const controllerFoo = (req, res, next) => {
-  res.send('ok');
-};
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
 // DEPENDENCIES
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(superPackage.middleware(app));
+superPackage.setupMiddlewares(app);
 // DEPENDENCIES
 
 superPackage.addSchema('GET', '/users/algo', {
@@ -34,6 +15,16 @@ superPackage.addSchema('GET', '/users/algo', {
     required: ['name'],
     properties: {
       name: { type: 'string' }
+    }
+  }
+});
+
+superPackage.addSchema('GET', '/users/algo/:id', {
+  params: {
+    type: 'object',
+    required: ['id'],
+    properties: {
+      id: { type: 'number' }
     }
   }
 });
@@ -55,6 +46,7 @@ superPackage.addSchema('POST', '/users/algo', {
   }
 });
 
-app.get('/users/algo', (req, res, next) => res.send('bla'));
-app.post('/users/algo', (req, res, next) => res.send('bla'));
+app.get('/users/algo', (req, res) => res.send('bla'));
+app.get('/users/algo/:id', (req, res) => res.send(req.params));
+app.post('/users/algo', (req, res) => res.send('bla'));
 app.listen(3000, () => console.log('listening at port 3000'));
