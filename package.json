@@ -12,6 +12,6 @@
   "dependencies": {
     "ajv": "^6.5.5",
     "eslint-config-wolox-node": "^2.0.0",
-    "express-wolox-logger": "^1.1.0"
+    "express-wolox-logger": "^4.0.1"
   }
 }
